@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Calculator</title>
+</head>
+<body>
+    <style>
+        * {
+            background-color: rgb(58, 57, 57);
+            color: white;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h1 {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calculator-body {
+            display: flex;
+            margin: auto;
+            margin-top: 20px;
+            align-items: center;
+            justify-content: center;
+            width: 17em;
+            height: 350px;
+            flex-wrap: wrap;
+            flex-direction: row;
+            background-color: grey;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .display {
+            background-color: whitesmoke;
+            width: 17em;
+            height: 30px;
+            border: none;
+            margin: 5px;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: right;
+            padding-right: 5px;
+        }
+
+        .keys {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-direction: row;
+            overflow: hidden;
+            background-color: grey;
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            font-size: 1.3em;
+            width: 60px;
+            height: 60px;
+            background-color: rgb(13, 13, 102);
+            border: 1px solid whitesmoke;
+        }
+
+        .btn:hover {
+            cursor: pointer;
+            background-color:rgb(54, 54, 167);
+        }
+
+        #clear-everything {
+            width: 120px;
+            background-color: rgb(177, 50, 4);
+        }
+
+        #clear-everything:hover {
+            background-color: rgb(235, 66, 4)
+        }
+
+        .plus-sign {
+            background-color: rgb(177, 50, 4);
+        }
+
+        .plus-sign:hover {
+            background-color: rgb(235, 66, 4);
+        }
+
+        .equal-sign {
+            background-color: green;
+            width: 120px;
+        }
+
+        .equal-sign:hover {
+            background-color: rgb(4, 175, 4);
+        }
+
+        footer {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+    </style>
+    <h1>JavaScript Simple Calculator</h1>
+    <div class="calculator-body">
+        <div class="display"></div>
+        <div class="keys">
+            <button class="btn" id="clear-everything">CE</button>
+            <button class="btn" id="*" onclick="addValue('*')">X</button>
+            <button class="btn" id="/" onclick="addValue('/')">÷</button>
+            <button class="btn" id="7" onclick="addValue('7')">7</button>
+            <button class="btn" id="8" onclick="addValue('8')">8</button>
+            <button class="btn" id="9" onclick="addValue('9')">9</button>
+            <button class="btn" id="-" onclick="addValue('-')">-</button>
+            <button class="btn" id="4" onclick="addValue('4')">4</button>
+            <button class="btn" id="5" onclick="addValue('5')">5</button>
+            <button class="btn" id="6" onclick="addValue('6')">6</button>
+            <button class="btn plus-sign" id="+" onclick="addValue('+')">+</button>
+            <button class="btn" id="1" onclick="addValue('1')">1</button>
+            <button class="btn" id="2" onclick="addValue('2')">2</button>
+            <button class="btn" id="3" onclick="addValue('3')">3</button>
+            <button class="btn" onclick="credits()">Click Me!</button>    
+            <button class="btn" id="." onclick="addValue('.')">,</button>
+            <button class="btn" id="0" onclick="addValue('0')">0</button>
+            <button class="btn equal-sign" id="=">=</button>
+        </div>
+    </div>
+
+    <script>
+        let display = document.querySelector('.display')
+        let clearEverything = document.querySelector('#clear-everything')
+        let resultButton = document.querySelector('.equal-sign')
+
+        function addValue(value) {
+            display.innerHTML += value;
+        }
+
+        clearEverything.addEventListener('click', clear)
+        function clear() {
+            display.innerHTML = ''
+        }
+
+        resultButton.addEventListener('click', result)
+        function result() {
+
+            try {
+                let res = eval(display.innerHTML)
+                display.innerHTML = res
+            } catch(e) {
+                display.innerHTML = 'ERROR'
+            }
+            
+        }
+
+        function credits() {
+            alert('Coded by Augusto Fornazari Neto')
+        }
+        
+    </script>
+</body>
+<footer>&copy<a target="_blank" href="https://github.com/cobra-coral">cobra-coral</a></footer>
+</html>
